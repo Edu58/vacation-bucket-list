@@ -1,6 +1,6 @@
 from flask import Flask
 from config import config_option
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -9,7 +9,7 @@ from flask_uploads import IMAGES, UploadSet, configure_uploads
 db = SQLAlchemy()
 login = LoginManager()
 photos = UploadSet('photos', IMAGES)
-bootstrap = Bootstrap5()
+bootstrap = Bootstrap()
 moment = Moment()
 
 
