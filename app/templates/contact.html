@@ -6,10 +6,42 @@
 {% endblock %}
 
 {% block content %}
-<div class="container contact">
-    
-   <form method="POST">
-    {{ render_form(form)}}  
-   </form>
+
+<html>
+
+            <body>
+
+<div class="container contact"  >
+    <head>
+        <style>
+            body{
+                background-size: cover;
+                background-color: #52babb;
+                background-image: url({{url_for('static',filename='images/BeachAnd.jpg')}});
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1 style="text-align: center;font-weight:bold;" >Contact <span style="color:rgb(9, 167, 230);">Us</span></h1><br>
+      <p style="text-align: center; font-size: 20px;color:white" > If you have any questions or queries a member of staff will always be happy to help. <br> Feel free to contact us by telephone, fax or email and we will be sure <br> to get back to you accordingly.
+
+    </p>
+       <div class="approach" style="display: flex;" >
+         <div class="flor">
+             <img src="../static/images/comp.jpg"  alt="" height="430px">
+         </div>  
+     
+     
+     <div class="our" style="margin-left:10%; width: 400px;">
+        <form method="POST">
+            {{ render_form(form)}}  
+           </form>
+         </div>
+     
+     </div>
 </div>
+</body>
+</html>
 {% endblock%}
