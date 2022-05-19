@@ -40,7 +40,7 @@ def add_vacation():
         db.session.add(new_vacation)
         db.session.commit()
         flash("Vacation added successfully", category='success')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.vacation_list'))
 
     return render_template('add_vacation.html', add_vacation_form=form)
 
