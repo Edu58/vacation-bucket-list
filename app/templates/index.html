@@ -9,12 +9,30 @@
 {% block title %} Vaccation Bucket List {% endblock %}
 
 {% block content %}
+<html>
+<head>
+    <style>
+            body{
+                background-size: cover;
+                background-image: url({{url_for('static',filename='images/BeachAnd.jpg')}});
+            }
+
+
+
+
+
+    </style>
+</head>
+
+
+<body>
+
+
 <div class="container h-100 d-flex justify-content-center align-items-center">
 
-    <div class="container w-50" style=" font-weight:bold; font-size:35px; color: yellow; margin-top:2%">
+    <div class="container w-50" style=" font-weight:bold; font-size:35px; margin-top:2%">
 
-        <p>
-
+        <p class="text-dark">
             “There's a simple rule to a sustainable life: Work hard, then take a good vacation, then work hard again and
             take a good vacation again... don't break this order!”
             ― Mehmet Murat ildan
@@ -22,7 +40,7 @@
 
 
         <a href="{{url_for('auth.register')}}">
-            <button type="button" class="btn btn-success">Sign Up</button>
+            <button type="button" class="btn btn-primary">Sign Up</button>
         </a>
         <a href="{{url_for('auth.login')}}">
             <button type="button" class="btn btn-success">Sign In</button>
@@ -31,4 +49,10 @@
 
     </div>
 </div>
+
+
+</body>
+</html>
+
+
 {% endblock content %}

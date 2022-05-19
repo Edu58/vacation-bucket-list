@@ -33,7 +33,7 @@ def login():
             if user is not None and user.verify_password(login_form.password.data):
                 login_user(user)
                 flash('Login successful', category='success')
-                return redirect(request.args.get('next') or url_for('main.index'))
+                return redirect(request.args.get('next') or url_for('main.vacations_list'))
             else:
                 flash("Wrong credentials", category="danger")
         else:

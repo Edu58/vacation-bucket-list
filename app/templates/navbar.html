@@ -1,37 +1,44 @@
-
-
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light " style="font-size: 25px; background-color:transparent;">
-    <div class="container-fluid" id="nav">
-      <a class="navbar-brand" href="{{url_for('main.index')}}"" style="font-size: 30px;color: #189AB4;" >VBL</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{{url_for('main.about')}}">About us</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="contacts.html">Contacts</a>
-          </li>
-
-         
-
-          <li class="nav-item">
-            <a class="nav-link active" href="{{url_for('auth.login')}}"> Sign In</a>
-          </li>
-          
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-2">
+    <div class="container-fluid d-flex justify-content-between">
+        <div class="container-fluid d-flex justify-content-between">
+            <a class="navbar-brand fs-4 fst-italic fw-normal" href="#">VBL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">
+                        <button class="btn btn-sm text-light" id="home-btn">Home</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.about') }}">
+                        <button class="btn btn-sm text-light">About</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('auth.logout') }}">
+                        <button class="btn btn btn-sm btn-outline-light">Logout</button>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('auth.login') }}">
+                        <button class="btn btn btn-sm btn-outline-light">Login</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('auth.register') }}">
+                        <button class="btn btn btn-sm btn-outline-light">Signup</button>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>

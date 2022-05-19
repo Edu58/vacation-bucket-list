@@ -18,13 +18,13 @@
     <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
-    <!--Navbar-->
-    {% block navbar %}
-    {% include 'navbar.html' %}
-    {% endblock %}
+<!--Navbar-->
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
 
-<div class="container" style="margin-top: 6rem;">
- 
+<div class="container">
+
     {{ render_messages() }}
 
     {% block content %}
