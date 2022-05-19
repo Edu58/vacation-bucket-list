@@ -56,8 +56,10 @@ class Vacations(db.Model):
     __tablename__ = 'vacations'
 
     vacation_id = db.Column(db.Integer, primary_key=True)
+    place = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String, nullable=False)
     pricing = db.Column(db.Integer, nullable=False)
+    days = db.Column(db.Integer, nullable=False)
     date_of_visit = db.Column(db.DateTime, nullable=False)
     destination_photo = db.Column(db.String, nullable=True)
     posted_on = db.Column(db.DateTime, default=datetime.utcnow)
