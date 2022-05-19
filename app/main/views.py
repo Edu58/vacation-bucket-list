@@ -54,7 +54,7 @@ def contact():
     form = ContactForm()
     if request.method == 'POST':
         if not form.validate():
-            flash('You must enter something into all of the fields')
+            flash('You must enter something into all of the fields', category="warning")
             return render_template('contact.html', form=form)
         else:
             msg = Message(form.subject.data, sender='[SENDER EMAIL]', recipients=['[RECIPIENT EMAIL]'])
@@ -85,7 +85,7 @@ def vacation_details(place, vacation_id):
         new_comment = Comments(comment=form.comment.data, vacation_id=vacation_id, user_id=current_user.user_id)
         Comments.save_comment(new_comment)
 
-        flash("Comment posted successfully")
+        flash("Comment posted successfully", category="success")
         return redirect(url_for('main.vacation_details', vacation=vacation, comment_form=form, comments=comments,
                                 place=vacation.place, vacation_id=vacation_id))
 
