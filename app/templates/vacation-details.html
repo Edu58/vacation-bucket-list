@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/utils.html' import render_icon %}
+{% from 'bootstrap5/form.html' import render_form %}
 
 {% block title %} Vacation {% endblock %}
 
 {% block content %}
 <p class="fs-3 fw-light text-center text-dark">{{ vacation.place }}</p>
 
-<div class="d-flex justify-content-center flex-column">
+<div class="d-flex justify-content-center flex-column mb-5">
     <div>
         <img src="{{ url_for('static', filename=vacation.destination_photo) }}" class="img-fluid"
              alt="{{ vacation.place }}">
@@ -29,7 +30,7 @@
     <div class="mt-3">
         <p class="fs-3 fw-light">Comments</p>
         <form method="post">
-
+            {{ render_form(comment_form) }}
         </form>
     </div>
 </div>
