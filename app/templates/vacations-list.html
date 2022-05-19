@@ -25,10 +25,11 @@
                     moment(vacation.date_of_visit).format('LL') }} </p>
                 <p class="card-text">{{ render_icon('alarm') }} &nbsp; {{ vacation.days }} days stay</p>
                 <p class="card-text mb-3">
-                    {{ render_icon('person') }} &nbsp; {{ vacation.user.first_name }} on {{
+                    {{ render_icon('person') }} &nbsp; posted by {{ vacation.user.first_name }} on {{
                     moment(vacation.posted_on).format('LL') }}
                 </p>
-                <a href="#" class="btn btn-sm btn-primary">See More</a>
+                <a href="{{ url_for('main.vacation_details', place=vacation.place, vacation_id=vacation.vacation_id) }}"
+                   class="btn btn-sm btn-primary">See More</a>
             </div>
         </div>
     </div>
