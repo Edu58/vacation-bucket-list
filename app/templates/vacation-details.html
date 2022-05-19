@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/utils.html' import render_icon %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %} Vacation {% endblock %}
+
+{% block content %}
+<p class="fs-3 fw-light text-center text-dark">{{ vacation.place }}</p>
+
+<div class="d-flex justify-content-center flex-column mb-5">
+    <div>
+        <img src="{{ url_for('static', filename=vacation.destination_photo) }}" class="img-fluid"
+             alt="{{ vacation.place }}">
+
+        <p class="mt-5 fs-4 fs-light">Experience</p>
+        <article class="mb-4">
+            {{ vacation.description }}
+        </article>
+        <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh {{ vacation.pricing }} - total amount spent</p>
+        <p class="card-text">{{ render_icon('calendar3') }} &nbsp; {{
+            moment(vacation.date_of_visit).format('LL') }} - date of vacation</p>
+        <p class="card-text">{{ render_icon('alarm') }} &nbsp; {{ vacation.days }} days stay - duration of vacation</p>
+        <p class="card-text mb-3">
+            {{ render_icon('person') }} &nbsp; Posted by {{ vacation.user.first_name }} {{ vacation.user.last_name }} on
+            {{
+            moment(vacation.posted_on).format('LL') }}
+        </p>
+    </div>
+
+    <div class="mt-3">
+        <p class="fs-3 fw-light">Comments</p>
+        <form method="post">
+            {{ render_form(comment_form) }}
+        </form>
+    </div>
+</div>
+{% endblock %}

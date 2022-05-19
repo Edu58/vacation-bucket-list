@@ -12,53 +12,28 @@
 <p class="fs-3 fw-light text-center">Start Your Journey</p>
 
 <div class="row mx-auto">
+    {% for vacation in vacations %}
     <div class="col-sm-6 col-md-6 col-lg-4 my-4 mx-auto">
         <div class="card">
-            <img src="https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg" class="card-img-top" alt="...">
+            <img src="{{ url_for('static', filename=vacation.destination_photo) }}" class="card-img-top"
+                 alt="{{ vacation.place }}">
             <div class="card-body">
-                <h5 class="card-title">{{ render_icon('geo-alt') }} Diani, Kenya</h5>
-                <p class="card-text">Best beach in Kenya</p>
-                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
-                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
-                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
-                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
-                <a href="#" class="btn btn-sm btn-primary">See More</a>
+                <h5 class="card-title">{{ render_icon('geo-alt') }} {{ vacation.place }}</h5>
+                <p class="card-text">{{ vacation.description|truncate(200,true,'...')}}</p>
+                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh {{ vacation.pricing }}</p>
+                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; {{
+                    moment(vacation.date_of_visit).format('LL') }} </p>
+                <p class="card-text">{{ render_icon('alarm') }} &nbsp; {{ vacation.days }} days stay</p>
+                <p class="card-text mb-3">
+                    {{ render_icon('person') }} &nbsp; posted by {{ vacation.user.first_name }} on {{
+                    moment(vacation.posted_on).format('LL') }}
+                </p>
+                <a href="{{ url_for('main.vacation_details', place=vacation.place, vacation_id=vacation.vacation_id) }}"
+                   class="btn btn-sm btn-primary">See More</a>
             </div>
         </div>
     </div>
-
-    <div class="col-sm-6 col-md-6 col-lg-4 my-4">
-        <div class="card">
-            <img src="https://citymonitor.ai/wp-content/uploads/sites/3/2021/10/GettyImages-1255346253.jpg"
-                 class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ render_icon('geo-alt') }} Kisumu, Kenya</h5>
-                <p class="card-text">Best place for fish</p>
-                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
-                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
-                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
-                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
-                <a href="#" class="btn btn-sm btn-primary">See More</a>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6 col-md-6 col-lg-4 my-4">
-        <div class="card">
-            <img src="https://cdn02.allafrica.com/download/pic/main/main/csiid/00540319:ec8bbb0263e72f97b0e81cb06ceec78e:arc614x376:w735:us1.jpg"
-                 class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ render_icon('geo-alt') }} Hells Gate, Kenya</h5>
-                <p class="card-text">National park Bike riding</p>
-                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
-                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
-                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
-                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
-                <a href="#" class="btn btn-sm btn-primary">See More</a>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/utils.html' import render_icon %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %} Vacations {% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {{ render_form(add_vacation_form) }}
+</form>
+{% endblock content %}
