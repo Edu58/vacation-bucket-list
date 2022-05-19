@@ -1,7 +1,10 @@
 from . import main
-from flask_login import login_required
+from app import photos, db
+from flask_login import login_required, current_user
 from flask import render_template, request, redirect, url_for, flash
 from .forms import NewDestination
+from app.models import Vacations
+from werkzeug.utils import secure_filename
 
 
 @main.route('/')
@@ -23,7 +26,23 @@ def add_vacation():
 
     if request.method == "POST":
         if form.validate_on_submit():
-            print(form.place.data)
+            image = form.photo.data
+
+            filename = secure_filename(image.filename)
+            photos.save(image)
+            path = f'photos/{filename}'
+
+            new_vacation = Vacations(place=form.place.data, description=form.description.data,
+                                     price=form.amount_spent.data, days=form.duration.data,
+                                     date_of_visit=form.date_of_visit.data, destination_photo=path,
+                                     user_id=current_user.user_id)
+
+            db.session.add(new_vacation)
+            db.session.commit()
+            flash("Vacation added successfully", category='success')
+            return redirect(url_for('main.index'))
+        else:
+            flash("Invalid form")
     return render_template('add_vacation.html', add_vacation_form=form)
 
 

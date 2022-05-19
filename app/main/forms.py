@@ -11,5 +11,6 @@ class NewDestination(FlaskForm):
                       validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')])
     date_of_visit = DateTimeLocalField('Day and time of visit', format='%m/%d/%y', validators=[DataRequired()])
     description = TextAreaField('Describe your experience', validators=[DataRequired()])
+    duration = IntegerField('Duration of your stay', validators=[DataRequired()])
     amount_spent = IntegerField('Total amount spent', validators=[DataRequired()])
     submit = SubmitField('submit')
