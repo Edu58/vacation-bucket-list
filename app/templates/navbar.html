@@ -4,21 +4,21 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light " style="font-size: 25px; background-color:transparent;">
     <div class="container-fluid" id="nav">
-      <a class="navbar-brand" href="#" style="font-size: 30px;color: #189AB4;">Vacation Bucket List</a>
+      <a class="navbar-brand" href="{{url_for('main.index')}}"" style="font-size: 30px;color: #189AB4;" >VBL</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="about.html">About us</a>
+            <a class="nav-link active" href="{{url_for('main.about')}}">About us</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="cantacts.html">Contacts</a>
+            <a class="nav-link active" href="contacts.html">Contacts</a>
           </li>
 
          

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
 {% endblock styles %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Vaccation Bucket List {% endblock %}
 
 {% block content %}
 <html>
@@ -33,7 +33,12 @@
             “There's a simple rule to a sustainable life: Work hard, then take a good vacation, then work hard again and take a good vacation again... don't break this order!”
             ― Mehmet Murat ildan
             </p>
-        
+
+
+            <a href="{{url_for('auth.register')}}"><button type="button" class="btn btn-success" >Sign Up</button> </a>
+            <a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-success" >Sign In</button> </a>
+
+          
         </div>
      </div>
         
