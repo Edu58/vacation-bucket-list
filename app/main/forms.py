@@ -21,3 +21,8 @@ class ContactForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired("What's the nature of your message?")])
     message = TextAreaField('Message', validators=[DataRequired("Didn't you want to say something?")])
     submit = SubmitField('Send')
+
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Write Your Comment', validators=[DataRequired(), length(max=200)])
+    submit = SubmitField('comment')
