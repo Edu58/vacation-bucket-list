@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% from 'bootstrap5/utils.html' import render_icon %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vacations-list.css') }}">
+{% endblock styles %}
+
+{% block title %} Vacations {% endblock %}
+
+{% block content %}
+<p class="fs-3 fw-light text-center">Start Your Journey</p>
+
+<div class="row mx-auto">
+    <div class="col-sm-6 col-md-6 col-lg-4 my-4 mx-auto">
+        <div class="card">
+            <img src="https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ render_icon('geo-alt') }} Diani, Kenya</h5>
+                <p class="card-text">Best beach in Kenya</p>
+                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
+                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
+                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
+                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
+                <a href="#" class="btn btn-sm btn-primary">See More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 my-4">
+        <div class="card">
+            <img src="https://citymonitor.ai/wp-content/uploads/sites/3/2021/10/GettyImages-1255346253.jpg"
+                 class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ render_icon('geo-alt') }} Kisumu, Kenya</h5>
+                <p class="card-text">Best place for fish</p>
+                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
+                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
+                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
+                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
+                <a href="#" class="btn btn-sm btn-primary">See More</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6 col-lg-4 my-4">
+        <div class="card">
+            <img src="https://cdn02.allafrica.com/download/pic/main/main/csiid/00540319:ec8bbb0263e72f97b0e81cb06ceec78e:arc614x376:w735:us1.jpg"
+                 class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ render_icon('geo-alt') }} Hells Gate, Kenya</h5>
+                <p class="card-text">National park Bike riding</p>
+                <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh 20,000</p>
+                <p class="card-text">{{ render_icon('calendar3') }} &nbsp; May 20 2022</p>
+                <p class="card-text">{{ render_icon('alarm') }} &nbsp; 3 days stay</p>
+                <p class="card-text mb-3">{{ render_icon('person') }} &nbsp;Edwin Karimi on May 20 2022</p>
+                <a href="#" class="btn btn-sm btn-primary">See More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

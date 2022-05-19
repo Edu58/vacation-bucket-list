@@ -2,13 +2,14 @@ import os
 
 
 class Config:
-    #SECRET_KEY = os.environ.get("SECRET_KEY")
+    # SECRET_KEY = os.environ.get("SECRET_KEY")
+    SECRET_KEY = 'youshouldusethis'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
 
 class DevConfig(Config):
     DEBUG = True
-    
+
 
 class ProdConfig(Config):
     DEBUG = False
