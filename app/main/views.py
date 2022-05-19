@@ -6,6 +6,8 @@ from .forms import NewDestination
 from app.models import Vacations
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc
+from flask_mail import Message, Mail
+from .forms import ContactForm
 
 
 @main.route('/')
@@ -45,6 +47,24 @@ def add_vacation():
     return render_template('add_vacation.html', add_vacation_form=form)
 
 
+@main.route('/contact',methods = ["GET","POST"])
+def contact():
+        form = ContactForm()
+        if request.method == 'POST':
+                if form.validate() == False:
+                        flash('You must enter something into all of the fields')
+                        return render_template('contact.html', form = form)
+                else:
+                        msg = Message(form.subject.data, sender='[SENDER EMAIL]', recipients=['[RECIPIENT EMAIL]'])
+                        msg.body = """
+                        From: %s %s <%s>
+                        %s
+                        """ % (form.firstName.data, form.lastName.data, form.email.data, form.message.data)
+                        mail.send(msg)
+                        return render_template('contact.html', success=True)
+        return render_template('contact.html',title = 'Contact Us',form = form)
+            
+    
 @main.route('/vacations-list', methods=["GET", "POST"])
 @login_required
 def vacations_list():
