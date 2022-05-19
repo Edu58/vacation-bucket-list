@@ -5,7 +5,7 @@
 {% block title %} Vacations {% endblock %}
 
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {{ render_form(add_vacation_form) }}
 </form>
 {% endblock content %}

@@ -24,25 +24,23 @@ def about():
 def add_vacation():
     form = NewDestination()
 
-    if request.method == "POST":
-        if form.validate_on_submit():
-            image = form.photo.data
+    if request.method == "POST" and form.validate_on_submit():
+        image = form.photo.data
 
-            filename = secure_filename(image.filename)
-            photos.save(image)
-            path = f'photos/{filename}'
+        filename = secure_filename(image.filename)
+        photos.save(image)
+        path = f'photos/{filename}'
 
-            new_vacation = Vacations(place=form.place.data, description=form.description.data,
-                                     price=form.amount_spent.data, days=form.duration.data,
-                                     date_of_visit=form.date_of_visit.data, destination_photo=path,
-                                     user_id=current_user.user_id)
+        new_vacation = Vacations(place=form.place.data, description=form.description.data,
+                                 pricing=form.amount_spent.data, days=form.duration.data,
+                                 date_of_visit=form.date_of_visit.data, destination_photo=path,
+                                 user_id=current_user.user_id)
 
-            db.session.add(new_vacation)
-            db.session.commit()
-            flash("Vacation added successfully", category='success')
-            return redirect(url_for('main.index'))
-        else:
-            flash("Invalid form")
+        db.session.add(new_vacation)
+        db.session.commit()
+        flash("Vacation added successfully", category='success')
+        return redirect(url_for('main.index'))
+
     return render_template('add_vacation.html', add_vacation_form=form)
 
 
