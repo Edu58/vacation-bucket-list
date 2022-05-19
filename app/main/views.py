@@ -1,13 +1,13 @@
 from . import main
-from app import photos, db
+from app import photos, db, mail
 from flask_login import login_required, current_user
 from flask import render_template, request, redirect, url_for, flash
 from .forms import NewDestination
 from app.models import Vacations
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc
-from flask_mail import Message, Mail
-from .forms import ContactForm
+from flask_mail import Message
+from .forms import ContactForm, CommentForm
 
 
 @main.route('/')
@@ -47,26 +47,35 @@ def add_vacation():
     return render_template('add_vacation.html', add_vacation_form=form)
 
 
-@main.route('/contact',methods = ["GET","POST"])
+@main.route('/contact', methods=["GET", "POST"])
+@login_required
 def contact():
-        form = ContactForm()
-        if request.method == 'POST':
-                if form.validate() == False:
-                        flash('You must enter something into all of the fields')
-                        return render_template('contact.html', form = form)
-                else:
-                        msg = Message(form.subject.data, sender='[SENDER EMAIL]', recipients=['[RECIPIENT EMAIL]'])
-                        msg.body = """
+    form = ContactForm()
+    if request.method == 'POST':
+        if not form.validate():
+            flash('You must enter something into all of the fields')
+            return render_template('contact.html', form=form)
+        else:
+            msg = Message(form.subject.data, sender='[SENDER EMAIL]', recipients=['[RECIPIENT EMAIL]'])
+            msg.body = """
                         From: %s %s <%s>
                         %s
                         """ % (form.firstName.data, form.lastName.data, form.email.data, form.message.data)
-                        mail.send(msg)
-                        return render_template('contact.html', success=True)
-        return render_template('contact.html',title = 'Contact Us',form = form)
-            
-    
+            mail.send(msg)
+            return render_template('contact.html', success=True)
+    return render_template('contact.html', title='Contact Us', form=form)
+
+
 @main.route('/vacations-list', methods=["GET", "POST"])
 @login_required
 def vacations_list():
     vacations = Vacations.query.order_by(desc(Vacations.posted_on))
     return render_template('vacations-list.html', vacations=vacations)
+
+
+@main.route('/vacation/<place>/<vacation_id>', methods=["GET", "POST"])
+@login_required
+def vacation_details(place, vacation_id):
+    form = CommentForm()
+    vacation = Vacations.query.filter_by(vacation_id=vacation_id).first()
+    return render_template('vacation-details.html', vacation=vacation, comment_form=form)

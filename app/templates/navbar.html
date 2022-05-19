@@ -12,13 +12,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.vacations_list') }}">
                         <button class="btn btn-sm text-light" id="home-btn">Home</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('main.add_vacation') }}">
-                        <button class="btn btn-sm text-light">Add</button>
+                        <button class="btn btn-sm text-light">Post</button>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -27,19 +27,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.contact') }}">
+                        <button class="btn btn-sm text-light">Contact</button>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('auth.logout') }}">
-                        <button class="btn btn btn-sm btn-outline-light">Logout</button>
+                        <button class="btn btn btn-sm btn-outline-danger">Logout</button>
                     </a>
                 </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('auth.login') }}">
-                        <button class="btn btn btn-sm btn-outline-light">Login</button>
+                        <button class="btn btn btn-sm btn-outline-success">Login</button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('auth.register') }}">
-                        <button class="btn btn btn-sm btn-outline-light">Signup</button>
+                        <button class="btn btn btn-sm btn-outline-primary">Signup</button>
                     </a>
                 </li>
                 {% endif %}
