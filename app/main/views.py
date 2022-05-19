@@ -12,7 +12,6 @@ from .forms import ContactForm, CommentForm
 
 
 @main.route('/')
-@login_required
 def index():
     return render_template('index.html')
 
@@ -43,7 +42,7 @@ def add_vacation():
         db.session.add(new_vacation)
         db.session.commit()
         flash("Vacation added successfully", category='success')
-        return redirect(url_for('main.vacation_list'))
+        return redirect(url_for('main.vacations_list'))
 
     return render_template('add_vacation.html', add_vacation_form=form)
 
@@ -90,3 +89,19 @@ def vacation_details(place, vacation_id):
                                 place=vacation.place, vacation_id=vacation_id))
 
     return render_template('vacation-details.html', vacation=vacation, comment_form=form, comments=comments)
+
+
+@main.route('/delete-vacation/<vacation_id>', methods=["GET", "POST"])
+@login_required
+def delete_vacation(vacation_id):
+    vacation_to_delete = Vacations.query.filter_by(vacation_id=vacation_id).first()
+
+    if vacation_to_delete:
+        db.session.delete(vacation_to_delete)
+        db.session.commit()
+        flash('Post deleted successfully', category='success')
+        return redirect(url_for('main.vacations_list'))
+    else:
+        pass
+
+    return redirect(url_for('main.vacations_list'))

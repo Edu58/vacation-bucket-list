@@ -1,0 +1,12 @@
+nav {
+    z-index: 1000;
+}
+
+footer span {
+    position: absolute;
+    bottom: 0;
+}
+
+.content {
+    min-height: 100vh;
+}

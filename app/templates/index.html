@@ -9,45 +9,27 @@
 {% block title %} Vacation Bucket List {% endblock %}
 
 {% block content %}
-<html>
-<head>
-    <style>
-            body{
-                background-size: cover;
-                background-image: url({{url_for('static',filename='images/BeachAnd.jpg')}});
-            }
-    </style>
-</head>
+<div class="home d-flex justify-content-center align-items-center min-vh-100">
 
+    <div class="w-50" style="font-size:35px;">
 
-<body>
-
-
-<div class="container h-100 d-flex justify-content-center align-items-center">
-
-    <div class="container w-50" style=" font-weight:bold; font-size:35px; margin-top:2%">
-
-        <p class="text-dark">
+        <p class="text-light">
             “There's a simple rule to a sustainable life: Work hard, then take a good vacation, then work hard again and
             take a good vacation again... don't break this order!”
             ― Mehmet Murat ildan
         </p>
 
 
-        <a href="{{url_for('auth.register')}}">
-            <button type="button" class="btn btn-primary">Sign Up</button>
-        </a>
-        <a href="{{url_for('auth.login')}}">
-            <button type="button" class="btn btn-success">Sign In</button>
-        </a>
+        <div class="d-flex">
+            <a href="{{url_for('auth.login')}}" class="me-4">
+                <button type="button" class="btn btn-lg btn-outline-success">Sign In</button>
+            </a>
+            <a href="{{url_for('auth.register')}}">
+                <button type="button" class="btn btn-lg btn-outline-primary">Sign Up</button>
+            </a>
+        </div>
 
 
     </div>
 </div>
-
-
-</body>
-</html>
-
-
 {% endblock content %}
