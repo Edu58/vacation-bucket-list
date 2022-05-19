@@ -7,6 +7,7 @@ from app.models import Vacations
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc
 from flask_mail import Message
+from app.models import Comments
 from .forms import ContactForm, CommentForm
 
 
@@ -78,4 +79,14 @@ def vacations_list():
 def vacation_details(place, vacation_id):
     form = CommentForm()
     vacation = Vacations.query.filter_by(vacation_id=vacation_id).first()
-    return render_template('vacation-details.html', vacation=vacation, comment_form=form)
+    comments = Comments.query.filter_by(vacation_id=vacation_id).all()
+
+    if request.method == "POST" and form.validate_on_submit():
+        new_comment = Comments(comment=form.comment.data, vacation_id=vacation_id, user_id=current_user.user_id)
+        Comments.save_comment(new_comment)
+
+        flash("Comment posted successfully")
+        return redirect(url_for('main.vacation_details', vacation=vacation, comment_form=form, comments=comments,
+                                place=vacation.place, vacation_id=vacation_id))
+
+    return render_template('vacation-details.html', vacation=vacation, comment_form=form, comments=comments)
