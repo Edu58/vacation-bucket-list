@@ -22,6 +22,11 @@ def create_app(config_name):
     bootstrap.init_app(app)
     moment.init_app(app)
 
+    login.init_app(app)
+    login.login_view = "auth.login"
+    login.session_protection = "strong"
+    login.login_message_category = "warning"
+
     configure_uploads(app, photos)
 
     from app.main import main

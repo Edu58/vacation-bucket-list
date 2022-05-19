@@ -1,4 +1,4 @@
-from app import db
+from app import db, login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -44,12 +44,12 @@ class Users(UserMixin, db.Model):
         return self.user_id
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     try:
-#         return Users.query.get(int(user_id))
-#     except:
-#         return None
+@login.user_loader
+def load_user(user_id):
+    try:
+        return Users.query.get(int(user_id))
+    except:
+        return None
 
 
 class Vacations(db.Model):
