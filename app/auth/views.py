@@ -4,6 +4,8 @@ from . import auth
 from .forms import SignupForm, LoginForm
 # from flask_login import login_required, login_user, logout_user
 # from .. import db
+import os
+
 
 
 @auth.route('/register',methods = ["GET","POST"])
@@ -37,6 +39,11 @@ def login():
 
     
     return render_template('auth/login.html',login_form = login_form)
+
+
+
+
+            
 
 # @auth.route('/logout')
 # @login_required
