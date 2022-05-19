@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/utils.html' import render_icon %}
 {% from 'bootstrap5/form.html' import render_form %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vacation-detail.css') }}">
+{% endblock styles %}
 
 {% block title %} Vacation {% endblock %}
 
 {% block content %}
 <p class="fs-3 fw-light text-center text-dark">{{ vacation.place }}</p>
 
-<div class="d-flex justify-content-center flex-column mb-5">
+<div class="container d-flex justify-content-center flex-column mb-5">
     <div>
         <div class="text-center">
             <img src="{{ url_for('static', filename=vacation.destination_photo) }}" class="img-fluid"

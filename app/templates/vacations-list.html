@@ -3,15 +3,17 @@
 
 {% block styles %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vacations-list.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vacation-list.css') }}">
 {% endblock styles %}
 
 {% block title %} Vacations {% endblock %}
 
 {% block content %}
-<p class="fs-3 fw-light text-center">Start Your Journey</p>
 
-<div class="row mx-auto">
+<div class="list">
+    <p class="fs-3 fw-light text-center">Start Your Journey</p>
+
+<div class="row mx-auto container">
     {% for vacation in vacations %}
     <div class="col-sm-6 col-md-6 col-lg-4 my-4 mx-auto">
         <div class="card">
@@ -19,7 +21,7 @@
                  alt="{{ vacation.place }}">
             <div class="card-body">
                 <h5 class="card-title">{{ render_icon('geo-alt') }} {{ vacation.place }}</h5>
-                <p class="card-text">{{ vacation.description|truncate(200,true,'...')}}</p>
+                <p class="card-text">{{ vacation.description|truncate(100,true,'...')}}</p>
                 <p class="card-text">{{ render_icon('cash-coin') }} &nbsp; Ksh {{ vacation.pricing }}</p>
                 <p class="card-text">{{ render_icon('calendar3') }} &nbsp; {{
                     moment(vacation.date_of_visit).format('LL') }} </p>
@@ -29,10 +31,11 @@
                     moment(vacation.posted_on).format('LL') }}
                 </p>
                 <a href="{{ url_for('main.vacation_details', place=vacation.place, vacation_id=vacation.vacation_id) }}"
-                   class="btn btn-sm btn-primary">See More</a>
+                   class="btn btn-sm btn-outline-primary">See More</a>
 
                 {% if current_user.user_id == vacation.user.user_id or current_user.role_id == 1 %}
-                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                <a href="{{ url_for('main.delete_vacation', vacation_id=vacation.vacation_id) }}"
+                   class="btn btn-sm btn-outline-danger">Delete</a>
                 {% endif %}
 
             </div>
@@ -41,4 +44,5 @@
     {% endfor %}
 </div>
 
+</div>
 {% endblock content %}
