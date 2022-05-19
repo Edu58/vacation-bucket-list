@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/utils.html' import render_icon %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
+{% endblock styles %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+<html>
+    <head>
+        <style>
+            body{
+                background-color:rgb(247, 247, 252);
+                
+            }
+        </style>
+    </head>
+
+
+<body>
+   <h3 style="text-align: center;">About <span style="color:rgb(9, 167, 230);">Us</span></h3><br><br>
+ 
+  <div class="approach" style="display: flex;" >
+    <div class="flor">
+        <img src="../static/images/coast.jpeg"  alt="" height="230px">
+    </div>  
+
+
+<div class="our" style="margin-left:20%;">
+    <h3>Who are <span style="color:rgb(9, 167, 230);">we?</span></h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+       <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+    </p>
+    </div>
+
+</div>
+        <br>
+        <br>
+        <div class="vision" style="display: flex;" >
+            <div class="ours">
+                <h3><span style="color:rgb(9, 167, 230);">Our</span>  Vision</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+                   <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+                </p>
+                </div>
+        
+        <div class="flo" style="margin-left: 20%;">
+            <img src="../static/images/cute.jpg"  alt="" height="400px">
+        </div>
+     
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="approach" style="display: flex;" >
+        <div class="flor">
+            <img src="../static/images/marissa.jpg"  alt="" height="400px">
+        </div>  
+    
+    
+    <div class="our" style="margin-left: 20%;">
+        <h3><span style="color:rgb(9, 167, 230);">Our</span>  Approach</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+           <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Rem voluptatum necessitatibus velit labore quam magni,<br> id animi ipsum, blanditiis veniam dignissimos optio nesciunt <br>illo esse minima nihil! Nesciunt, quas esse.
+        </p>
+        </div>
+
+</div>
+
+    </body>
+</html>
+
+{% endblock content %}
