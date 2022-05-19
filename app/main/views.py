@@ -10,3 +10,7 @@ def index():
 @main.route('/about')
 def about():
     return render_template('about.html')
+    
+@main.route('/vacations-list', methods=["GET", "POST"])
+def vacations_list():
+    return render_template('vacations-list.html')
