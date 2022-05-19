@@ -5,6 +5,7 @@ from flask import render_template, request, redirect, url_for, flash
 from .forms import NewDestination
 from app.models import Vacations
 from werkzeug.utils import secure_filename
+from sqlalchemy import desc
 
 
 @main.route('/')
@@ -47,4 +48,5 @@ def add_vacation():
 @main.route('/vacations-list', methods=["GET", "POST"])
 @login_required
 def vacations_list():
-    return render_template('vacations-list.html')
+    vacations = Vacations.query.order_by(desc(Vacations.posted_on))
+    return render_template('vacations-list.html', vacations=vacations)
