@@ -1,76 +1,68 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/utils.html' import render_icon %}
 
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
-{% endblock styles %}
-
 {% block title %} About {% endblock %}
 
 {% block content %}
-<html>
-    <head>
-        <style>
-            body{
-                background-color:rgb(247, 247, 252);
-                
-            }
-        </style>
-    </head>
+<h3 style="text-align: center;">About <span style="color:rgb(9, 167, 230);">Us</span></h3><br><br>
 
-
-<body>
-   <h3 style="text-align: center;">About <span style="color:rgb(9, 167, 230);">Us</span></h3><br><br>
- 
-  <div class="approach" style="display: flex;" >
+<div class="approach" style="display: flex;">
     <div class="flor">
-        <img src="../static/images/coast.jpeg"  alt="" height="230px">
-    </div>  
+        <img src="../static/images/coast.jpeg" alt="" height="230px">
+    </div>
 
 
-<div class="our" style="margin-left:20%;">
-    <h3>Who are <span style="color:rgb(9, 167, 230);">we?</span></h3>
-    <p>The Vacation-Bucket List(VBL) offers a variety of vacation ideas. <br>Our goal is to ensure that our clients get the best<br> and quality services.We've all heard that you can't purchase <br>happiness.You are happy when you travel,  
-       <br>and tourism is flourishing now. VBL is here to give you suggestions <br> where to visit. Everyone now travels without <br>restrictions.To be the market's most successful brand, continually<br> provide great deals.ptatum necessitatibus<br></p>
+    <div class="our" style="margin-left:20%;">
+        <h3>Who are <span style="color:rgb(9, 167, 230);">we?</span></h3>
+        <p>The Vacation-Bucket List(VBL) offers a variety of vacation ideas. <br>Our goal is to ensure that our clients
+            get the best<br> and quality services.We've all heard that you can't purchase <br>happiness.You are happy
+            when you travel,
+            <br>and tourism is flourishing now. VBL is here to give you suggestions <br> where to visit. Everyone now
+            travels without <br>restrictions.To be the market's most successful brand, continually<br> provide great
+            deals.ptatum necessitatibus<br></p>
     </div>
 
 </div>
-        <br>
-        <br>
-        <div class="vision" style="display: flex;" >
-            <div class="ours">
-                <h3><span style="color:rgb(9, 167, 230);">Our</span>  Vision</h3>
-                <p>Our vision is to provide outstanding travel & event experiences by<br> creating inspiring journeys, meetings, unique incentive trips,<br> immersive experiences and event solutions that support<br> the client’s objectives,
-                   <br> build VBL as a preferred brand for our partners and enhance market<br> positioning.Our travel products will always be sustainable,<br> respectful to the local cultures & economically beneficial.<br>VBL is our future!
-                </p>
-                </div>
-        
-        <div class="flo" style="margin-left: 20%;">
-            <img src="../static/images/cute.jpg"  alt="" height="400px">
-        </div>
-     
-
+<br>
+<br>
+<div class="vision" style="display: flex;">
+    <div class="ours">
+        <h3><span style="color:rgb(9, 167, 230);">Our</span> Vision</h3>
+        <p>Our vision is to provide outstanding travel & event experiences by<br> creating inspiring journeys, meetings,
+            unique incentive trips,<br> immersive experiences and event solutions that support<br> the client’s
+            objectives,
+            <br> build VBL as a preferred brand for our partners and enhance market<br> positioning.Our travel products
+            will always be sustainable,<br> respectful to the local cultures & economically beneficial.<br>VBL is our
+            future!
+        </p>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="approach" style="display: flex;" >
-        <div class="flor">
-            <img src="../static/images/marissa.jpg"  alt="" height="400px">
-        </div>  
-    
-    
+
+    <div class="flo" style="margin-left: 20%;">
+        <img src="../static/images/cute.jpg" alt="" height="400px">
+    </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<div class="approach" style="display: flex;">
+    <div class="flor">
+        <img src="../static/images/marissa.jpg" alt="" height="400px">
+    </div>
+
+
     <div class="our" style="margin-left: 20%;">
-        <h3><span style="color:rgb(9, 167, 230);">Our</span>  Approach</h3>
-        <p>At VBL, our first and foremost endeavour is to put you at the <br>centre of our universe. Only when we completely understand <br>your idea of travel, we start weaving your personalised travel story. <br>Our tour designers are there for 
-           <br>you at every step from the time you envision your travel<br> dream till you are back home safely with your unique souvenirs and story. <br>Our inspiration is to push the boundaries of experiential<br> engagement while showcasing <br>
-           the finest of cultural experiences & personal immersions.</p>
-        </div>
+        <h3><span style="color:rgb(9, 167, 230);">Our</span> Approach</h3>
+        <p>At VBL, our first and foremost endeavour is to put you at the <br>centre of our universe. Only when we
+            completely understand <br>your idea of travel, we start weaving your personalised travel story. <br>Our tour
+            designers are there for
+            <br>you at every step from the time you envision your travel<br> dream till you are back home safely with
+            your unique souvenirs and story. <br>Our inspiration is to push the boundaries of experiential<br>
+            engagement while showcasing <br>
+            the finest of cultural experiences & personal immersions.</p>
+    </div>
 
 </div>
-
-    </body>
-</html>
 
 {% endblock content %}
