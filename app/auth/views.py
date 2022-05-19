@@ -33,7 +33,7 @@ def login():
         #     login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
 
-    flash('Invalid username or Password')
+    # flash('Invalid username or Password')
 
     
     return render_template('auth/login.html',login_form = login_form)
