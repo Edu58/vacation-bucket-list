@@ -1,13 +1,13 @@
 from . import main
 from app import photos, db, mail
 from flask_login import login_required, current_user
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import NewDestination
 from app.models import Vacations
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc
 from flask_mail import Message
-from app.models import Comments
+from app.models import Comments, Users
 from .forms import ContactForm, CommentForm
 
 
@@ -105,3 +105,40 @@ def delete_vacation(vacation_id):
         pass
 
     return redirect(url_for('main.vacations_list'))
+
+
+@main.route('/profile/<first_name>', methods=["GET", "POST"])
+@login_required
+def profile(first_name):
+    return render_template('profile.html', user=current_user)
+
+
+@main.route('/user/<user_id>/upload-profile-picture', methods=['POST'])
+@login_required
+def upload_profile_pic(user_id):
+    user = Users.query.filter_by(user_id=user_id).first()
+
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_path = path
+        db.session.commit()
+
+    return redirect(url_for('main.profile', first_name=current_user.first_name))
+
+
+@main.route('/user/update-profile-picture/<user_id>', methods=['POST'])
+@login_required
+def update_profile_pic(user_id):
+    user = Users.query.filter_by(user_id=user_id).first()
+
+    if user is None:
+        abort(404)
+
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_path = path
+        db.session.commit()
+
+    return redirect(url_for('main.profile', first_name=current_user.first_name))

@@ -1,3 +1,5 @@
+{% from 'bootstrap5/utils.html' import render_icon %}
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid d-flex justify-content-between">
         <div class="container-fluid d-flex justify-content-between">
@@ -29,6 +31,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('main.contact') }}">
                         <button class="btn btn-sm text-light">Contact</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="{{ url_for('main.profile', first_name=current_user.first_name) }}">
+                        <button class="btn btn-sm btn btn-outline-light">{{ render_icon('person-check') }}</button>
                     </a>
                 </li>
                 <li class="nav-item">
